@@ -4,8 +4,10 @@ using System;
 public class TerrainAnalysis : MonoBehaviour {
 
     // Terrain Basic Data
-    public float width;
+    public float heightmapX;
+    public float heightmapY;
     public float length;
+    public float width;
     public float minHeight;
     public float maxHeight;
 
@@ -31,18 +33,21 @@ public class TerrainAnalysis : MonoBehaviour {
         terrainMesh = GetComponent<Terrain>();
         TerrainData td = terrainMesh.terrainData;
 
-        // Get the heightmap and store it in a 2D float array
-        float[,] heightmap = td.GetHeights(0, 0, (int)width, (int)length);
+        // Return width (x) and height (y) of the heightmap
+        heightmapX = td.heightmapWidth;
+        heightmapY = td.heightmapHeight;
 
-        /*
-         * ===========================================
-         * ======= DIMENSIONS AND HEIGHT RANGE =======
-         * ===========================================
-        */
+        // Get the heightmap and store it in a 2D float array 
+        float[,] heightmap = td.GetHeights(0, 0, (int)heightmapX, (int)heightmapY);
 
-        // Return length (x) and width (y)
         width = td.size.x;
         length = td.size.z;
+
+        /*
+         * ============================
+         * ======= HEIGHT RANGE =======
+         * ============================
+        */
 
         // Return height range
         minHeight = 0; // TODO: Isn't this always the case? Is this neccessary?

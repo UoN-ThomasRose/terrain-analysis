@@ -17,9 +17,13 @@ public class TerrainAnalysisEditor : Editor {
             ta.GetMetrics();
 
         // Custom GUI
-        EditorGUILayout.LabelField("Dimensions", EditorStyles.boldLabel);
-        EditorGUILayout.LabelField("Width", ta.width.ToString());
-        EditorGUILayout.LabelField("Length", ta.length.ToString());
+        EditorGUILayout.LabelField("Heightmap Dimensions", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("X", ta.heightmapX.ToString());
+        EditorGUILayout.LabelField("Y", ta.heightmapY.ToString());
+
+        EditorGUILayout.LabelField("Terrain Dimensions", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("X", ta.width.ToString());
+        EditorGUILayout.LabelField("Z", ta.length.ToString());
 
         EditorGUILayout.LabelField("Height Properties", EditorStyles.boldLabel);
         EditorGUILayout.LabelField("Min Height", ta.minHeight.ToString());
